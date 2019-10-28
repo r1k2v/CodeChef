@@ -1,0 +1,24 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+import java.math.BigInteger; 
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		BigInteger[] series = new BigInteger[101];
+	    series[0]=BigInteger.ZERO;
+        series[1]=BigInteger.ONE;
+		for(int i=2;i<=100;i++){
+		    series[i]=series[i-1].multiply(BigInteger.valueOf(i));
+		    	}
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int j=sc.nextInt();
+		    System.out.println(series[j]);
+		}
+	}
+}

@@ -1,0 +1,104 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class MergeSort{
+     void Merge(int input[], int l, int m, int r){
+        int n1=m-l+1;
+        int n2=r-m;
+        int a[]=new int[n1];
+        int b[]=new int[n2];
+        
+        for(int i=0;i<n1;i++){
+            a[i]=input[l+i];
+            
+        }
+        
+        for(int j=0;j<n2;j++){
+            b[j]=input[m+1+j];
+            
+        }
+        int i=0;
+        int j=0;
+        int k=l;
+        while(i<n1&&j<n2){
+            if(a[i]<b[j]){
+                input[k]=a[i];
+                i++;
+            }else{
+                input[k]=b[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<n1){
+            input[k]=a[i];
+            i++;
+            k++;
+        }
+        while(j<n2){
+        input[k]=b[j];
+            j++;
+            k++;
+    }
+    }
+     void Sort(int input[], int l, int r){
+        if(l<r){
+            int m=l+(r-l)/2;
+            Sort(input,l,m);
+            Sort(input,m+1,r);
+            Merge(input,l,m,r);
+        }
+    }
+}
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	    InputStream inputStream = System.in;
+        InputReader in = new InputReader(inputStream);
+        int t=in.nextInt();
+        int input[] =new int[t];
+        //int output[] =new int [t];
+        for(int i=0;i<t;i++){
+            int temp=in.nextInt();
+            input[i]=temp;
+           // System.out.println(input[i]);
+        }
+        MergeSort a=new MergeSort();
+        a.Sort(input,0,t-1);
+	    for(int i=0;i<t;i++){
+	        System.out.println(input[i]);
+	    }
+	    
+		// your code goes here
+	}
+
+static class InputReader {
+		public BufferedReader reader;
+		public StringTokenizer tokenizer;
+
+		public InputReader(InputStream stream) {
+			reader = new BufferedReader(new InputStreamReader(stream), 32768);
+			tokenizer = null;
+		}
+
+		public String next() {
+			while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+				try {
+				    tokenizer = new StringTokenizer(reader.readLine());
+				} catch (IOException e) {
+				    throw new RuntimeException(e);
+				}
+			}
+			return tokenizer.nextToken();
+		}
+
+		public int nextInt() {
+			return Integer.parseInt(next());
+		}
+	}
+}

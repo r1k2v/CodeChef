@@ -1,0 +1,40 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		int new1=0;
+		int new2=0;
+		int team=0;
+		int lead=0;
+		int winner=0;
+		int highest=0;
+		while(t-->0){
+		    team=0;
+		    int n1=sc.nextInt();
+		    int n2=sc.nextInt();
+		    new1=new1+n1;
+		    new2=new2+n2;
+		    if(new1>new2){
+		        team=1;
+		        lead=new1-new2;
+		    }else if(new1<new2){
+		        team=2;
+		        lead=new2-new1;
+		    }
+		    if(lead>highest){
+		        highest=lead;
+		        winner=team;
+		    }
+		}
+		System.out.println(winner +" "+ highest);
+	}
+}
